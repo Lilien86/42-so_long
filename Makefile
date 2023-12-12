@@ -6,7 +6,7 @@
 #    By: lauger <lauger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:46:39 by lauger            #+#    #+#              #
-#    Updated: 2023/12/11 14:10:25 by lauger           ###   ########.fr        #
+#    Updated: 2023/12/12 09:58:30 by lauger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(LIBFT_LIBRARY):
-	$(MAKE) -C $(LIBFT)
+	make --quiet -C $(LIBFT) re
 
 $(NAME): $(LIBFT_LIBRARY) $(OBJ)
 	$(CC) $(OBJ) $(MLX) $(LDFLAGS) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
@@ -37,11 +37,11 @@ $(NAME): $(LIBFT_LIBRARY) $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT) -c $< -o $@
 clean:
-	$(MAKE) -C $(LIBFT) clean
+	make --quiet -C $(LIBFT) clean
 	rm -f $(NAME)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT) clean
+	make --quiet -C $(LIBFT) clean
 	rm -f $(NAME)
 
 re: fclean all
