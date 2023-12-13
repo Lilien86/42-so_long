@@ -38,11 +38,11 @@ $(NAME): $(LIBFT_LIBRARY) $(OBJ)
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT) -c $< -o $@
 clean:
 	make --quiet -C $(LIBFT) clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(OBJ)
 
 fclean: clean
 	make --quiet -C $(LIBFT) clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(OBJ)
 
 re: fclean all
 
