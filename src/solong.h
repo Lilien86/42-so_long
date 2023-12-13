@@ -26,4 +26,6 @@
 # include <math.h>
 # include <mlx.h>
 
+int ft_check_map(int size_y, char **str);
+
 #endif
