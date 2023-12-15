@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/15 09:33:26 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/15 10:31:14 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ int main(int ac, char **av)
     while (line != NULL)
     {
         tmp = ft_strjoin(buf, line);
-        free(buf);
         buf = tmp;
         free(line);
         line = get_next_line(fd);
     }
-    free(line);
     close(fd);
+    if (line != NULL)
+        free(line);
     tab = ft_creat_tab(buf);
+    if (buf != NULL)
+        free(buf);
     ft_free_tab(tab);
-    free(buf);
     return (0);
 }
