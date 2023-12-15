@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/15 10:31:14 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/15 10:55:48 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int main(int ac, char **av)
     if (buf != NULL)
         free(buf);
     ft_free_tab(tab);
+    mbx_test();
     return (0);
 }
