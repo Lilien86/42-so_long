@@ -6,7 +6,7 @@
 /*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/18 11:36:02 by lilien           ###   ########.fr       */
+/*   Updated: 2023/12/18 20:24:04 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,21 @@
 #  define BUFFER_SIZE 100
 #endif
 
-typedef struct s_data {
+typedef struct s_image
+{
     void *img;
-    char *addr;
-    int bits_per_pixel;
-    int line_length;
-    int endian;
-} t_data;
+    char symbol;
+} t_image;
+
+typedef struct s_display_info {
+    char symbol;
+    int x;
+    int y;
+    int size_image;
+    void *mlx_win;
+    void *mlx;
+} t_display_info;
+
 
 #include <fcntl.h>
 #include <unistd.h>

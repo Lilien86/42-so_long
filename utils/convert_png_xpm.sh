@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Répertoire contenant les fichiers .png que vous souhaitez convertir
-repertoire_source="/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Pack content/Sprites/Tileset"
+repertoire_source="/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Sprites/Tileset"
 
 # Convertit tous les fichiers .png en .xpm dans le répertoire source
 for fichier_png in "$repertoire_source"/*.png; do
