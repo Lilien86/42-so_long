@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lauger <lauger@student.42.fr>              +#+  +:+       +#+         #
+#    By: lilien <lilien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:46:39 by lauger            #+#    #+#              #
-#    Updated: 2023/12/13 10:09:16 by lauger           ###   ########.fr        #
+#    Updated: 2023/12/18 09:20:08 by lilien           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = so_long
 LIBFT = ./libft
 LIBFT_LIBRARY = $(LIBFT)/libft.a
 
-MLX_PATH = mlx
-MLX = -L $(MLX_PATH) -Imlx -O3
+MLX_PATH = ./mlx
+MLX = -L $(MLX_PATH) -Imlx -O3 -lmlx
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(LIBFT)
@@ -29,10 +29,10 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(LIBFT_LIBRARY):
-	make --quiet -C $(LIBFT) re
+	make --quiet -C $(LIBFT)  re
 
 $(NAME): $(LIBFT_LIBRARY) $(OBJ)
-	$(CC) $(OBJ) $(MLX) $(LDFLAGS) -lmlx_Linux -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) $(OBJ) $(MLX) $(LDFLAGS) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT) -c $< -o $@
@@ -46,5 +46,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+gdb: CFLAGS += -g
+gdb: fclean all
 
+.PHONY: all clean fclean re

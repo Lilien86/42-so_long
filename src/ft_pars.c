@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/15 10:55:48 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/18 11:31:02 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ int main(int ac, char **av)
     if (line != NULL)
         free(line);
     tab = ft_creat_tab(buf);
-    if (buf != NULL)
-        free(buf);
+    free(buf);
+    mbx_links(tab);
     ft_free_tab(tab);
-    mbx_test();
     return (0);
 }

@@ -1,0 +1,27 @@
+/* XPM */
+static char *spr_smallrock1[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 5 1 ",
+"  c #1E4D41",
+". c gray35",
+"X c gray60",
+"o c #B6B6B6",
+"O c None",
+/* pixels */
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOoooOOOOOOO",
+"OOOOOXooooOOOOOO",
+"OOOOO.XoXXo OOOO",
+"OOOOO ..X.. OOOO",
+"OOOOOO     OOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO"
+};

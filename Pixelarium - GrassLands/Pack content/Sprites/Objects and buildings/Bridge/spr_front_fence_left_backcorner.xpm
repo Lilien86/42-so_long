@@ -1,0 +1,28 @@
+/* XPM */
+static char *spr_front_fence_left_backcorner[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 6 1 ",
+"  c #181425",
+". c #412431",
+"X c #6C3333",
+"o c #874A41",
+"O c #BD7152",
+"+ c None",
+/* pixels */
+"+++++++OO+++++++",
+"+++++++oo+++++++",
+"++++++OOOO++++++",
+"+++++OOOOOO+++++",
+"+++++OOOOOO+++++",
+"+++++oOOOOo+++++",
+"+++++XooooXoOOOO",
+"+++++oXXXXooOOOO",
+"+++++oooooo.oooo",
+"+++++oooooo.XXXX",
+"+++++XooooX+++++",
+"+++++XXXXXX+++++",
+"+++++.XXXX.     ",
+"+++++ ....      ",
+"+++++      +++++",
+"++++++    ++++++"
+};
