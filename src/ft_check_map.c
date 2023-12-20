@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/15 08:21:55 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/20 13:13:09 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_error(const char *message)
 	return -1;
 }
 
-int	ft_single_EP(char **str)
+static int	ft_single_EP(char **str)
 {
 	size_t nb_e;
 	size_t nb_p;
@@ -48,7 +48,7 @@ int	ft_single_EP(char **str)
 
 }
 
-int ft_square_wall(size_t size_y, char **str)
+static int ft_square_wall(size_t size_y, char **str)
 {
 	size_t i = 0;
 
@@ -100,8 +100,8 @@ int ft_check_map(size_t size_y, char **str)
 		}
 		i++;
 	}
-	i = 0;
-	ft_square_wall(size_y, str);
-	ft_single_EP(str);
+	if (ft_square_wall(size_y, str) == -1
+		|| ft_single_EP(str) == -1)
+		return (-1);
 	return (0);
 }

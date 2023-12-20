@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lilien <lilien@student.42.fr>              +#+  +:+       +#+         #
+#    By: lauger <lauger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:46:39 by lauger            #+#    #+#              #
-#    Updated: 2023/12/18 09:20:08 by lilien           ###   ########.fr        #
+#    Updated: 2023/12/20 11:08:13 by lauger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(LIBFT)
 LDFLAGS = -L $(LIBFT) -lft
 
-SRC = ./src/ft_pars.c ./src/ft_check_map.c ./src/mbx_test.c
+SRC = ./src/ft_pars.c ./src/ft_check_map.c ./src/ft_display_mbx.c
 
 OBJ = $(SRC:.c=.o)
 

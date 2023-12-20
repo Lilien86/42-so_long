@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/18 11:31:02 by lilien           ###   ########.fr       */
+/*   Updated: 2023/12/20 13:15:21 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// I'm waiting (present progressif : be + -ing)
 
 #include "solong.h"
 
@@ -36,7 +38,11 @@ static char    **ft_creat_tab(char *str)
     tab = ft_split(str, '\n');
     while (tab[cnt] != NULL)
         cnt++;
-    ft_check_map(cnt, &tab[n]);
+    if (ft_check_map(cnt, &tab[n]) == -1)
+    {
+        ft_free_tab(tab);
+        return (NULL);
+    }
     return (tab);
 }
 
@@ -63,6 +69,7 @@ int main(int ac, char **av)
     while (line != NULL)
     {
         tmp = ft_strjoin(buf, line);
+        free(buf);
         buf = tmp;
         free(line);
         line = get_next_line(fd);
@@ -72,7 +79,8 @@ int main(int ac, char **av)
         free(line);
     tab = ft_creat_tab(buf);
     free(buf);
-    mbx_links(tab);
+    if (tab != NULL)
+        mbx_links(tab);
     ft_free_tab(tab);
     return (0);
 }

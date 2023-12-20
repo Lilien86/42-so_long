@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mbx_test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/19 14:53:49 by lilien           ###   ########.fr       */
+/*   Updated: 2023/12/20 08:21:06 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ int mbx_links(char **tab)
     if (tab == NULL)
         return (0);
     mlx_win = mlx_new_window(mlx, 1500, 1300, "So_long");
-    image_array[0] = (t_image){mlx_xpm_file_to_image(mlx, "/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Sprites/Tileset/sable_r.xpm", &image_info.size_image, &image_info.size_image), '1'};
-    image_array[1] = (t_image){mlx_xpm_file_to_image(mlx, "/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Sprites/Tileset/graise_r.xpm", &image_info.size_image, &image_info.size_image), '0'};
-    image_array[2] = (t_image){mlx_xpm_file_to_image(mlx, "/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Sprites/Tileset/graise2_r.xpm", &image_info.size_image, &image_info.size_image), 'C'};
-    image_array[3] = (t_image){mlx_xpm_file_to_image(mlx, "/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Sprites/Tileset/terre_r.xpm", &image_info.size_image, &image_info.size_image), 'E'};
-    image_array[4] = (t_image){mlx_xpm_file_to_image(mlx, "/home/lilien/Documents/42-so_long/Pixelarium - GrassLands/Sprites/Tileset/void_r.xpm", &image_info.size_image, &image_info.size_image), 'P'};
+    image_array[0] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/sable_r.xpm", &image_info.size_image, &image_info.size_image), '1'};
+    image_array[1] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/graise_r.xpm", &image_info.size_image, &image_info.size_image), '0'};
+    image_array[2] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/graise2_r.xpm", &image_info.size_image, &image_info.size_image), 'C'};
+    image_array[3] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/terre_r.xpm", &image_info.size_image, &image_info.size_image), 'E'};
+    image_array[4] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/void_r.xpm", &image_info.size_image, &image_info.size_image), 'P'};
     image_info.mlx = mlx;
     image_info.mlx_win = mlx_win;
 
