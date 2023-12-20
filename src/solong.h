@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 09:37:28 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/20 14:15:16 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_display_info {
     int size_image;
     void *mlx_win;
     void *mlx;
+	t_image image_array[5];
 } t_display_info;
 
 

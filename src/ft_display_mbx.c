@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mbx_test.c                                         :+:      :+:    :+:   */
+/*   ft_display_mbx.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 08:21:06 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/20 14:16:44 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void cleanup_resources(void *mlx, void *mlx_win, t_image *image_array)
             mlx_destroy_image(mlx, image_array[i].img);
         i++;
     }
-    free(image_array);
     mlx_destroy_window(mlx, mlx_win);
     mlx_destroy_display(mlx);
     free(mlx);
@@ -58,11 +57,24 @@ static void ft_check_symbol(char **tab, t_display_info *image_info, t_image *ima
     }
 }
 
+int     handle_keydown(int keycode, void *param)
+{
+    t_display_info *image_info = (t_display_info *) param;
+    (void) image_info;
+
+    ft_printf("KEY PRESSSSSSSSSSSSESESESEEDDDDDDDD : %d\n", keycode);
+	if (keycode == 65307)
+	{
+		cleanup_resources(image_info->mlx, image_info->mlx_win, image_info->image_array);
+		exit(0);
+	}
+    return 0;
+}
+
 int mbx_links(char **tab)
 {
     void *mlx;
     void *mlx_win;
-    t_image image_array[5];
     t_display_info image_info;
 
     image_info.size_image = 50;
@@ -70,16 +82,20 @@ int mbx_links(char **tab)
     if (tab == NULL)
         return (0);
     mlx_win = mlx_new_window(mlx, 1500, 1300, "So_long");
-    image_array[0] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/sable_r.xpm", &image_info.size_image, &image_info.size_image), '1'};
-    image_array[1] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/graise_r.xpm", &image_info.size_image, &image_info.size_image), '0'};
-    image_array[2] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/graise2_r.xpm", &image_info.size_image, &image_info.size_image), 'C'};
-    image_array[3] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/terre_r.xpm", &image_info.size_image, &image_info.size_image), 'E'};
-    image_array[4] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/void_r.xpm", &image_info.size_image, &image_info.size_image), 'P'};
+    image_info.image_array[0] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/sable_r.xpm", &image_info.size_image, &image_info.size_image), '1'};
+    image_info.image_array[1] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/graise_r.xpm", &image_info.size_image, &image_info.size_image), '0'};
+    image_info.image_array[2] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/graise2_r.xpm", &image_info.size_image, &image_info.size_image), 'C'};
+    image_info.image_array[3] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/terre_r.xpm", &image_info.size_image, &image_info.size_image), 'E'};
+    image_info.image_array[4] = (t_image){mlx_xpm_file_to_image(mlx, "/nfs/homes/lauger/Documents/PROJECT/cercle 3/so_long/Pixelarium - GrassLands/Sprites/Tileset/void_r.xpm", &image_info.size_image, &image_info.size_image), 'P'};
     image_info.mlx = mlx;
     image_info.mlx_win = mlx_win;
 
-    ft_check_symbol(tab, &image_info, image_array);
+    ft_check_symbol(tab, &image_info, image_info.image_array);
+    ft_free_tab(tab);
+
+    mlx_hook(image_info.mlx_win, 2, (1L<<0), handle_keydown, &image_info);
+
     mlx_loop(mlx);
-    cleanup_resources(mlx, mlx_win, image_array);
+    cleanup_resources(mlx, mlx_win, image_info.image_array);
     return 0;
 }

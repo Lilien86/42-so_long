@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 13:15:21 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/20 14:17:29 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int main(int ac, char **av)
     char    *tmp;
     char    **tab;
 
+	// ac++;
+	// av[1] = "test.txt";
     if (ac != 2)
         return (0);
     if(check_file_extension(av[1]) == 0)
@@ -69,7 +71,6 @@ int main(int ac, char **av)
     while (line != NULL)
     {
         tmp = ft_strjoin(buf, line);
-        free(buf);
         buf = tmp;
         free(line);
         line = get_next_line(fd);
@@ -81,6 +82,5 @@ int main(int ac, char **av)
     free(buf);
     if (tab != NULL)
         mbx_links(tab);
-    ft_free_tab(tab);
     return (0);
 }
