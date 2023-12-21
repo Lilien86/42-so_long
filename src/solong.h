@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 14:15:16 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/21 13:15:37 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct s_image
     void *img;
     char symbol;
 } t_image;
+
+typedef struct s_position
+{
+    int x;
+    int y;
+} t_position;
 
 typedef struct s_display_info {
     char symbol;

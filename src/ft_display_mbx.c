@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 14:16:44 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/21 12:54:42 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int     handle_keydown(int keycode, void *param)
     t_display_info *image_info = (t_display_info *) param;
     (void) image_info;
 
-    ft_printf("KEY PRESSSSSSSSSSSSESESESEEDDDDDDDD : %d\n", keycode);
 	if (keycode == 65307)
 	{
 		cleanup_resources(image_info->mlx, image_info->mlx_win, image_info->image_array);
