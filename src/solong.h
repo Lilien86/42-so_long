@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/21 13:15:37 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/22 13:55:18 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
-#endif
+# endif
 
 typedef struct s_image
 {
@@ -46,8 +46,8 @@ typedef struct s_display_info {
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#include "mlx.h"
-#include "libft.h"
+//#include "mlx.h"
+// #include "libft.h"
 
 int ft_check_map(size_t size_y, char **str);
 int ft_error(const char *message);
