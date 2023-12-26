@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_research_exit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/22 14:00:42 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/26 10:53:59 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,108 +20,90 @@ int     isObstacle(char **tab, t_position player)
         return (0);
 }
 
-/*int     reset_map(char **tab)
-{
-    int     i;
-    int     j;
-
-    i = 0;
-    while (tab[i])
-    {
-        j = 0;
-        while (tab[i][j])
-        {
-            if (tab[i][j] == 'X')
-                tab[i][j] = '0';
-            j++;
-        }
-        i++;
-    }
-    return (0);
-}*/
-
-t_position     research_thing(char **tab, t_position start, char c)
+t_position research_char(char **tab, t_position start, char c)
 {
     t_position find;
 
     find.y = -1;
     find.x = -1;
-    while(tab[start.y])
+
+    int y = start.y;
+    while (tab[y] != NULL)
     {
-        start.x = 0;
-        while (tab[start.y][start.x])
+        int x = start.x;
+        
+        while (tab[y][x] != '\0')
         {
-            if (tab[start.y][start.x] == c)
-            {
-                find.y = start.y;
-                find.x = start.x;
+            if (tab[y][x] == c) {
+                find.y = y;
+                find.x = x;
                 return (find);
             }
-            start.x++;
+            x++;
         }
-        start.y++;
+        y++;
+        start.x = 0;
     }
-     return (find);
+
+    return (find);
 }
 
-int     canReachPosition(char **tab, t_position player, t_position destination)
+int can_go_position(char **tab, t_position player, t_position destination)
 {
+    if (player.x < 0 || player.y < 0 || tab[player.y] == NULL || tab[player.y][player.x] == '\0' || tab[player.y][player.x] == 'X')
+        return 0;
     if (isObstacle(tab, player))
         return 0;
-
     if ((player.x == destination.x) && (player.y == destination.y))
         return 1;
-
     tab[player.y][player.x] = 'X';
-    if (   canReachPosition(tab, (t_position){player.x - 1, player.y}, destination)
-        || canReachPosition(tab, (t_position){player.x + 1, player.y}, destination)
-        || canReachPosition(tab, (t_position){player.x, player.y - 1}, destination)
-        || canReachPosition(tab, (t_position){player.x, player.y + 1}, destination))
+    if (can_go_position(tab, (t_position){player.x - 1, player.y}, destination)
+        || can_go_position(tab, (t_position){player.x + 1, player.y}, destination)
+        || can_go_position(tab, (t_position){player.x, player.y - 1}, destination)
+        || can_go_position(tab, (t_position){player.x, player.y + 1}, destination))
     {
-        tab[player.x][player.y] = '2';
+        tab[player.y][player.x] = 'I';
         return 1;
     }
+    tab[player.y][player.x] = '0';
+    return (-1);
+}   
 
-    tab[player.x][player.y] = '0';
-    return (0);
-}
-
-int     ft_research_object_exit(char **tab, t_position player)
+int ft_research_object_exit(char **tab, t_position player, char c)
 {
     t_position start;
     t_position destination;
 
-    start.y = 2;
+    start.y = 0;
     start.x = 0;
-    destination = research_thing(tab, start, 'C');
-    while (destination.x != -1 && destination.y != -1)
+    while (1)
     {
-        if (canReachPosition(tab, player, destination) == 1)
-        {
-            destination.x = player.x;
-            destination.y = player.y;
-        }
-        else 
+        destination = research_char(tab, start, c);
+        if (destination.x == -1 && destination.y == -1)
+            break;
+        if (can_go_position(tab, player, destination) == 0)
             return (0);
-        destination = research_thing(tab, player, 'C');
+        start.x = destination.x + 1;
+        start.y = destination.y;
     }
     return (1);
 }
 
+/*
 void *ft_calloc(int i, int j) {
     return malloc(i * j);
 }
-
+#include <stdio.h>
 int main()
 {
 
     char *map[] = {
         "11111111",
         "1P110101",
-        "1C000001",
-        "111C0101",
-        "110C0101",
-        "110C0101",
+        "10000001",
+        "11100101",
+        "11000101",
+        "11000101",
         "11111111"
     };
 
@@ -134,11 +116,10 @@ int main()
     }
     tab[7] = NULL;
 
-    t_position player = {1, 1};
-    //t_position destination;
-    //reset_map(map);
 
-    if (ft_research_object_exit(tab, player))
+    t_position player = {1, 1};
+
+    if (ft_research_object_exit(tab, player, 'C'))
     {
         printf("Chemin vers 'C' trouvé!\n");
 
@@ -152,9 +133,7 @@ int main()
         }
     }
     else
-    {
         printf("Aucun chemin vers 'C' trouvé!\n");
-    }
 
     return 0;
-}
+}*/

@@ -22,7 +22,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(LIBFT)
 LDFLAGS = -L $(LIBFT) -lft
 
-SRC = ./src/ft_pars.c ./src/ft_check_map.c ./src/ft_display_mbx.c
+SRC = ./src/ft_pars.c ./src/ft_check_map.c ./src/ft_display_mbx.c ./src/ft_research_exit.c
 
 OBJ = $(SRC:.c=.o)
 

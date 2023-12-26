@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 13:13:09 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/26 10:58:44 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,9 @@ int ft_check_map(size_t size_y, char **str)
 		}
 		i++;
 	}
+	//t_position player = research_char(str, (t_position){0, 0}, 'P');
 	if (ft_square_wall(size_y, str) == -1
-		|| ft_single_EP(str) == -1)
+		|| ft_single_EP(str) == -1/* || ft_research_object_exit(str, player, 'C')*/)
 		return (-1);
 	return (0);
 }

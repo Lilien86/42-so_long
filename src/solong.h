@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/22 13:55:18 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/26 10:51:21 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ typedef struct s_display_info {
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-//#include "mlx.h"
-// #include "libft.h"
+#include "mlx.h"
+#include "libft.h"
 
-int ft_check_map(size_t size_y, char **str);
-int ft_error(const char *message);
-int mbx_links(char **tab);
+int     ft_check_map(size_t size_y, char **str);
+int         ft_error(const char *message);
+int         mbx_links(char **tab);
+int         ft_research_object_exit(char **tab, t_position player, char c);
+t_position  research_char(char **tab, t_position start, char c);
 
 #endif
