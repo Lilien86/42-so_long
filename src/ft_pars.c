@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/20 14:17:29 by lauger           ###   ########.fr       */
+/*   Updated: 2023/12/26 13:34:55 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int main(int ac, char **av)
     char    *tmp;
     char    **tab;
 
-	// ac++;
-	// av[1] = "test.txt";
     if (ac != 2)
         return (0);
     if(check_file_extension(av[1]) == 0)

@@ -6,7 +6,7 @@
 /*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/26 10:58:44 by lilien           ###   ########.fr       */
+/*   Updated: 2023/12/26 14:36:13 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_single_EP(char **str)
 	{
 		j = 0;
 		if (nb_e > 1 || nb_p > 1)
-			return ft_error("Map is not valid because there is an extra 'E' or 'P'.");
+			return (-1);
 		while (str[i][j])
 		{
 			if (str[i][j] == 'E')
@@ -55,21 +55,21 @@ static int ft_square_wall(size_t size_y, char **str)
 	while (str[0][i])
 	{
 		if (str[0][i] != '1')
-			return ft_error("Map is not valid because it misses a wall at the top.");
+			return (-1);
 		i++;
 	}
 	i = 0;
 	while (str[size_y - 1][i])
 	{
 		if (str[size_y - 1][i] != '1')
-			return ft_error("Map is not valid because it misses a wall at the bottom.");
+			return (-1);
 		i++;
 	}
 	i = 0;
 	while (((ft_strlen(str[i])) >= size_y) && (ft_strlen(str[i]) == ft_strlen(str[0])))
 	{
 		if (str[i][0] != '1' && str[i][ft_strlen(str[i]) - 1] != '1')
-			return ft_error("Map is not valid because it misses a wall on the sides.");
+			return (-1);
 		i++;
 	}
 	return 0;
@@ -100,9 +100,9 @@ int ft_check_map(size_t size_y, char **str)
 		}
 		i++;
 	}
-	//t_position player = research_char(str, (t_position){0, 0}, 'P');
+	t_position player = research_char(str, (t_position){0, 0}, 'P');
 	if (ft_square_wall(size_y, str) == -1
-		|| ft_single_EP(str) == -1/* || ft_research_object_exit(str, player, 'C')*/)
-		return (-1);
+		|| ft_single_EP(str) == -1 || ft_research_object_exit(str, player, 'C') == -1)
+			return ft_error("map is not valide\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/26 10:53:59 by lilien           ###   ########.fr       */
+/*   Updated: 2023/12/26 15:35:37 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,19 @@ t_position research_char(char **tab, t_position start, char c)
 int can_go_position(char **tab, t_position player, t_position destination)
 {
     if (player.x < 0 || player.y < 0 || tab[player.y] == NULL || tab[player.y][player.x] == '\0' || tab[player.y][player.x] == 'X')
-        return 0;
+        return (-1);
     if (isObstacle(tab, player))
-        return 0;
+        return (-1);
     if ((player.x == destination.x) && (player.y == destination.y))
-        return 1;
+        return (1);
     tab[player.y][player.x] = 'X';
-    if (can_go_position(tab, (t_position){player.x - 1, player.y}, destination)
-        || can_go_position(tab, (t_position){player.x + 1, player.y}, destination)
-        || can_go_position(tab, (t_position){player.x, player.y - 1}, destination)
-        || can_go_position(tab, (t_position){player.x, player.y + 1}, destination))
+    if (can_go_position(tab, (t_position){player.x - 1, player.y}, destination) != -1
+        || can_go_position(tab, (t_position){player.x + 1, player.y}, destination) != -1
+        || can_go_position(tab, (t_position){player.x, player.y - 1}, destination) != -1
+        || can_go_position(tab, (t_position){player.x, player.y + 1}, destination) != -1)
     {
         tab[player.y][player.x] = 'I';
-        return 1;
+        return (1);
     }
     tab[player.y][player.x] = '0';
     return (-1);
@@ -81,16 +81,16 @@ int ft_research_object_exit(char **tab, t_position player, char c)
         destination = research_char(tab, start, c);
         if (destination.x == -1 && destination.y == -1)
             break;
-        if (can_go_position(tab, player, destination) == 0)
-            return (0);
+        printf("%d\n",can_go_position(tab, player, destination));
+        if (can_go_position(tab, player, destination) == -1)
+            return (-1);
         start.x = destination.x + 1;
         start.y = destination.y;
     }
     return (1);
 }
 
-/*
-void *ft_calloc(int i, int j) {
+/*void *ft_calloc(int i, int j) {
     return malloc(i * j);
 }
 #include <stdio.h>
@@ -100,8 +100,8 @@ int main()
     char *map[] = {
         "11111111",
         "1P110101",
-        "10000001",
-        "11100101",
+        "1111C101",
+        "11100111",
         "11000101",
         "11000101",
         "11111111"
@@ -119,9 +119,9 @@ int main()
 
     t_position player = {1, 1};
 
-    if (ft_research_object_exit(tab, player, 'C'))
+    if (ft_research_object_exit(tab, player, 'C') == 1)
     {
-        printf("Chemin vers 'C' trouvé!\n");
+        printf("chemin vers 'C' trouvé!\n");
 
         for (int i = 0; i < 7; i++)
         {
