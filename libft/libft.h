@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
 
 typedef struct s_list
 {
@@ -100,5 +101,7 @@ char    *ft_strjoin_modif(char *s1, char *s2);
 
 int		ft_atoi_base(char *str, char *base);
 void    ft_free_tab(char **str);
+int     ft_strlen_map(char **map);
+char 	**ft_strcpy_map(char **original, int height, int width);
 
 #endif

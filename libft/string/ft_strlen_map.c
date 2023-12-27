@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_tab.c                                      :+:      :+:    :+:   */
+/*   ft_strlen_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 09:26:20 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/15 09:50:34 by lauger           ###   ########.fr       */
+/*   Created: 2023/12/27 07:32:02 by lilien            #+#    #+#             */
+/*   Updated: 2023/12/27 07:37:45 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void    ft_free_tab(char **str)
+int     ft_strlen_map(char **map)
 {
     int i;
 
     i = 0;
-    if (str == NULL || *str == NULL)
-        return ;
-    while (str[i])
-    {
-        free(str[i]);
+    if (map == 0 || *map == 0)
+        return (0);
+    while (map[i])
         i++;
-    }
-    free(str);
+    return (i);
 }

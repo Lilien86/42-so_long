@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror -fPIE -I. -I./check_char -I./management_memory -I./string -I./link_list
+CFLAGS = -Wall -Wextra -Werror -I. -I./check_char -I./management_memory -I./string -I./link_list
 NAME = libft.a
 CC = cc
 
@@ -50,6 +50,8 @@ SOURCES += \
     ./string/ft_memmove.c \
     ./string/ft_strlcat.c \
     ./string/ft_toupper.c \
+    ./string/ft_strcpy_map.c \
+    ./string/ft_strlen_map.c \
     ./link_list/ft_lstmap.c \
     ./link_list/ft_lstnew.c \
     ./link_list/ft_lstclear.c \
