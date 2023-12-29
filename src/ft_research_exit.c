@@ -6,13 +6,13 @@
 /*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/27 07:59:48 by lilien           ###   ########.fr       */
+/*   Updated: 2023/12/29 09:54:11 by lilien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int     isObstacle(char **tab, t_position player)
+static int     isObstacle(char **tab, t_position player)
 {
     if (tab[player.y][player.x] == '1')
         return 1;
@@ -48,7 +48,7 @@ t_position research_char(char **tab, t_position start, char c)
     return (find);
 }
 
-int can_go_position(char **tab, t_position player, t_position destination)
+static int can_go_position(char **tab, t_position player, t_position destination)
 {
     if (player.x < 0 || player.y < 0 || tab[player.y] == NULL || tab[player.y][player.x] == '\0' || tab[player.y][player.x] == 'X')
         return (-1);
