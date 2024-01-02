@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_research_exit.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/29 09:54:11 by lilien           ###   ########.fr       */
+/*   Updated: 2024/01/02 13:54:56 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,37 @@ static int     isObstacle(char **tab, t_position player)
 
 t_position research_char(char **tab, t_position start, char c)
 {
-    t_position find;
+	t_position	find;
+	int 		x;
+	int			y;
+		
+	find.y = -1;
+	find.x = -1;	
+	y = start.y;
 
-    find.y = -1;
-    find.x = -1;
-
-    int y = start.y;
-    while (tab[y] != NULL)
-    {
-        int x = start.x;
-        
-        while (tab[y][x] != '\0')
-        {
-            if (tab[y][x] == c) {
-                find.y = y;
-                find.x = x;
-                return (find);
-            }
-            x++;
-        }
-        y++;
-        start.x = 0;
-    }
-
-    return (find);
+	/*int i = 0;
+	while(tab[0][i])
+	{
+		ft_printf("%c", tab[0][i]);
+		i++;
+	}*/
+	while (tab[y] != NULL && y < (int)ft_strlen_map(tab))
+	{
+		x = start.x;
+		while (tab[y][x] != '\0' && x < (int)ft_strlen(tab[y]))
+		{
+			if (tab[y][x] == c) {
+				ft_printf("P trouver\n");
+				find.y = y;
+				find.x = x;
+				return (find);
+			}
+			x++;
+		}
+		y++;
+		start.x = 0;
+	}
+	return (find);
 }
 
 static int can_go_position(char **tab, t_position player, t_position destination)
