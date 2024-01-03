@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/02 13:54:56 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/02 14:40:17 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,13 @@ t_position research_char(char **tab, t_position start, char c)
 	find.y = -1;
 	find.x = -1;	
 	y = start.y;
-
-	/*int i = 0;
-	while(tab[0][i])
-	{
-		ft_printf("%c", tab[0][i]);
-		i++;
-	}*/
 	while (tab[y] != NULL && y < (int)ft_strlen_map(tab))
 	{
 		x = start.x;
 		while (tab[y][x] != '\0' && x < (int)ft_strlen(tab[y]))
 		{
-			if (tab[y][x] == c) {
-				ft_printf("P trouver\n");
+			if (tab[y][x] == c)
+			{
 				find.y = y;
 				find.x = x;
 				return (find);

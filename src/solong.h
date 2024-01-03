@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/02 10:11:46 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/03 10:52:17 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
+
+typedef struct s_manage_map
+{
+	int		fd;
+	char	*line;
+	char	*buf;
+	char	*tmp;
+	char	**tab;
+} t_manage_map;
 
 typedef struct s_image
 {

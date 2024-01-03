@@ -1,0 +1,36 @@
+/* XPM */
+static char *wall[] = {
+/* columns rows colors chars-per-pixel */
+"46 22 8 1 ",
+"  c #422835",
+". c #756760",
+"X c #523A42",
+"o c #1C1117",
+"O c #88776F",
+"+ c #301D27",
+"@ c #38262D",
+"# c white",
+/* pixels */
+"                                              ",
+"..X.....o...o....oX.....o...o....oX.....o.....",
+"........o...o....o......o...o....o......o.....",
+"OOOOOOXOoOOOoOOOOoOOOOXOoOOOoOOOOoOOOOXOoOOOOO",
+"XXXXXXXXoXXXoXXXXoXXXXXXoXXXoXXXXoXXXXXXoXXXXX",
+"        o   o    o      o   o    o      o     ",
+"    +   o  +o    o  +   o  +o    o  +   o    +",
+"oooooooooooooooooooooooooooooooooooooooooooooo",
+"+XXoXXXXXXoXXXXX+XXoXXXXXXoXXXXX+XXoXXXXXXoXXX",
+"   o      o        o      o        o      o   ",
+"   o      o +      o      o +      o      o + ",
+"oooooooooooooooooooooooooooooooooooooooooooooo",
+"XXXXXXoXXXXXXo@XXXXXXXoXXXXXXo@XXXXXXXoXXXXXXo",
+"      o      o        o      o        o      o",
+"  +   o      o    +   o      o    +   o      o",
+"oooooooooooooooooooooooooooooooooooooooooooooo",
+"XXXoXXXXXoXXXXXXXoXXXXXXXoXXXXXXXoXXXXXXXoXXXX",
+"   o     o       o       o       o       o    ",
+"   o   + o +     o     + o +     o    +  o +  ",
+"oooooooooooooooooooooooooooooooooooooooooooooo",
+"++++++++++++++++++++++++++++++++++++++++++++++",
+"+++  ++++ ++++++++++ +++++ +++++++  ++ +++++++"
+};

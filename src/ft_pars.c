@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/27 09:03:19 by lilien           ###   ########.fr       */
+/*   Updated: 2024/01/03 11:02:23 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,73 @@
 
 #include "solong.h"
 
-static int check_file_extension(const char *filename)
+static int		check_file_extension(const char *filename)
 {
-    
 	size_t len = strlen(filename);
-    
-    if (len < 5)
-        return (0);
-    if (ft_strncmp(filename + len - 4, ".txt", ft_strlen(filename)) == 0
-        || ft_strncmp(filename + len - 4, ".ber", ft_strlen(filename)) == 0)
-        return (1);
-    return (0);
+	
+	if (len < 5)
+	    return (0);
+	if (ft_strncmp(filename + len - 4, ".txt", ft_strlen(filename)) == 0
+	    || ft_strncmp(filename + len - 4, ".ber", ft_strlen(filename)) == 0)
+	    return (1);
+	return (0);
 }
 
-static char    **ft_creat_tab(char *str)
+static char		**ft_creat_tab(char *str)
 {
-    char **tab;
-    int  n;
-    int  cnt;
+	char **tab;
+	int  n;
+	int  cnt;
 
-    n = 0;
-    cnt = 0;
-    tab = ft_split(str, '\n');
-    while (tab[cnt] != NULL)
-        cnt++;
-    if (ft_check_map(cnt, &tab[n]) == -1)
-    {
-        ft_free_tab(tab);
-        return (NULL);
-    }
-    return (tab);
+	n = 0;
+	cnt = 0;
+	tab = ft_split(str, '\n');
+	while (tab[cnt] != NULL)
+		cnt++;
+	if (ft_check_map(cnt, &tab[n]) == -1)
+	{
+		ft_free_tab(tab);
+		return (NULL);
+	}
+	return (tab);
 }
 
-int main(int ac, char **av)
+static int		manage_map(t_manage_map all)
 {
-    int     fd;
-    char    *line;
-    char    *buf;
-    char    *tmp;
-    char    **tab;
+	all.buf = ft_calloc(1, 1);
+	all.line = get_next_line(all.fd);
+	while (all.line != NULL)
+	{
+		all.tmp = ft_strjoin(all.buf, all.line);
+		all.buf = all.tmp;
+		free(all.line);
+		all.line = get_next_line(all.fd);
+	}
+	close(all.fd);
+	if (all.line != NULL)
+		free(all.line);
+	all.tab = ft_creat_tab(all.buf);
+	free(all.buf);
+	if (all.tab != NULL)
+		mbx_links(all.tab);
+	ft_free_tab(all.tab);
+	return (0);
+}
 
-    if (ac != 2)
-        return (0);
-    if(check_file_extension(av[1]) == 0)
-        return ft_error("Map is not valid because a format is not good");
-    fd = open(av[1], O_RDONLY);
-    if (fd == -1)
-    {
-    	perror("Error at open the file");
-    	return(0);
-    }
-    buf = ft_calloc(1, 1);
-    line = get_next_line(fd);
-    while (line != NULL)
-    {
-        tmp = ft_strjoin(buf, line);
-        buf = tmp;
-        free(line);
-        line = get_next_line(fd);
-    }
-    close(fd);
-    if (line != NULL)
-        free(line);
-    tab = ft_creat_tab(buf);
-    free(buf);
-    if (tab != NULL)
-        mbx_links(tab);
-    return (0);
+int		main(int ac, char **av)
+{
+	t_manage_map all;
+
+	if (ac != 2)
+		return (0);
+	if(check_file_extension(av[1]) == 0)
+		return ft_error("Map is not valid because a format is not good");
+	all.fd = open(av[1], O_RDONLY);
+	if (all.fd == -1)
+	{
+		perror("Error at open the file");
+		return(0);
+	}
+	manage_map(all);
+	return (0);
 }
