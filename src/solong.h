@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/03 10:52:17 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/03 13:50:22 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,30 @@ typedef struct s_manage_map
 	char	*buf;
 	char	*tmp;
 	char	**tab;
-} t_manage_map;
+}	t_manage_map;
 
 typedef struct s_image
 {
-	void *img;
-	char symbol;
-} t_image;
+	void	*img;
+	char	symbol;
+}	t_image;
 
 typedef struct s_position
 {
-	int x;
-	int y;
-} t_position;
+	int	x;
+	int	y;
+}	t_position;
 
 typedef struct s_display_info {
-	char symbol;
-	char **map;
-	int x;
-	int y;
-	int size_image;
-	void *mlx_win;
-	void *mlx;
-	t_image image_array[5];
-} t_display_info;
-
+	char	symbol;
+	char	**map;
+	int		x;
+	int		y;
+	int		size_image;
+	void	*mlx_win;
+	void	*mlx;
+	t_image	image_array[5];
+}	t_display_info;
 
 #include <fcntl.h>
 #include <unistd.h>

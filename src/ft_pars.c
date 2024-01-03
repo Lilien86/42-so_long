@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/03 11:02:23 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/03 13:42:26 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 #include "solong.h"
 
-static int		check_file_extension(const char *filename)
+static int	check_file_extension(const char *filename)
 {
-	size_t len = strlen(filename);
-	
+	size_t	len;
+
+	len = strlen(filename);
 	if (len < 5)
-	    return (0);
-	if (ft_strncmp(filename + len - 4, ".txt", ft_strlen(filename)) == 0
-	    || ft_strncmp(filename + len - 4, ".ber", ft_strlen(filename)) == 0)
-	    return (1);
+		return (0);
+	if (ft_strncmp(filename + len - 4, ".ber", ft_strlen(filename)) == 0)
+		return (1);
 	return (0);
 }
 
-static char		**ft_creat_tab(char *str)
+static char	**ft_creat_tab(char *str)
 {
-	char **tab;
-	int  n;
-	int  cnt;
+	char	**tab;
+	int		n;
+	int		cnt;
 
 	n = 0;
 	cnt = 0;
@@ -45,7 +45,7 @@ static char		**ft_creat_tab(char *str)
 	return (tab);
 }
 
-static int		manage_map(t_manage_map all)
+static int	manage_map(t_manage_map all)
 {
 	all.buf = ft_calloc(1, 1);
 	all.line = get_next_line(all.fd);
@@ -67,19 +67,19 @@ static int		manage_map(t_manage_map all)
 	return (0);
 }
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_manage_map all;
+	t_manage_map	all;
 
 	if (ac != 2)
 		return (0);
-	if(check_file_extension(av[1]) == 0)
-		return ft_error("Map is not valid because a format is not good");
+	if (check_file_extension(av[1]) == 0)
+		ft_error("Map is not valid because a format is not good");
 	all.fd = open(av[1], O_RDONLY);
 	if (all.fd == -1)
 	{
 		perror("Error at open the file");
-		return(0);
+		return (0);
 	}
 	manage_map(all);
 	return (0);
