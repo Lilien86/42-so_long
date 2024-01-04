@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 13:44:31 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/04 14:06:06 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,11 @@ static int	ft_display(t_display_info *image_info, t_image *image_array)
 	int	dest_y;	
 	int	i;
 
-	//if (!image_info || !image_array)
-	//	return (ft_error("Null pointer passed to ft_display\n"));
 	dest_x = image_info->x * image_info->size_image;
 	dest_y = image_info->y * image_info->size_image;
 	i = 0;
 	while (i < 5)
 	{
-		//if (!image_array[i].img)
-		//	return (ft_error("Image not loaded at index\n"));
 		if (image_array[i].symbol == image_info->symbol)
 		{
 			mlx_put_image_to_window(image_info->mlx, image_info->mlx_win,
