@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lilien <lilien@student.42.fr>              +#+  +:+       +#+         #
+#    By: lauger <lauger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:46:39 by lauger            #+#    #+#              #
-#    Updated: 2023/12/26 15:35:30 by lilien           ###   ########.fr        #
+#    Updated: 2024/01/04 10:00:16 by lauger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I $(LIBFT)
 LDFLAGS = -L $(LIBFT) -lft
 
-SRC = ./src/ft_pars.c ./src/ft_check_map.c ./src/ft_display_mbx.c ./src/ft_research_exit.c
+SRC = ./src/ft_pars.c ./src/ft_check_map.c ./src/ft_display_mbx.c ./src/ft_research_exit.c ./src/ft_keydown.c ./src/ft_movement_x_y.c
 
 OBJ = $(SRC:.c=.o)
 

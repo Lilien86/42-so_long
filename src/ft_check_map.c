@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/03 13:43:20 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/04 13:51:19 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,40 @@ static int	ft_square_wall(size_t size_y, char **str)
 	return (0);
 }
 
+static int	manage_error(size_t size_y, char **str, t_position player)
+{
+	if (ft_square_wall(size_y, str) == -1)
+	{
+		ft_printf("map is not valide because the size is wrong");
+		return (-1);
+	}
+	else if (ft_single_ep(str) == -1)
+	{
+		ft_printf
+			("map is not valide because there are too many players or exits");
+		return (-1);
+	}
+	else if (ft_research_object_exit(str, player, 'C') == -1)
+	{
+		ft_printf("map is not valide because the consumables is not accesible");
+		return (-1);
+	}
+	else if (ft_research_object_exit(str, player, 'E') == -1)
+	{
+		ft_printf("map is not valide because the exit is not accesible");
+		return (-1);
+	}
+	else
+		return (0);
+}
+
 int	ft_check_map(size_t size_y, char **str)
 {
 	size_t		i;
 	size_t		j;
-	size_t		k;
 	t_position	player;
 
 	i = 0;
-	k = 0;
-	while (str[k])
-	{
-		ft_printf("%d: %s\n",k, str[k]);
-		k++;
-	}
 	while (str[i] != 0)
 	{
 		j = 0;
@@ -96,14 +116,13 @@ int	ft_check_map(size_t size_y, char **str)
 		{
 			if (str[i][j] != '0' && str[i][j] != '1' && str[i][j] != 'C'
 				&& str[i][j] != 'E' && str[i][j] != 'P' && str[i][j] != '\0')
-				return ft_error("The map does not contain the requested characters");
+				return (-1);
 			j++;
 		}
 		i++;
 	}
 	player = research_char(str, (t_position){0, 0}, 'P');
-	if (ft_square_wall(size_y, str) == -1 || ft_single_ep(str) == -1 
-		|| ft_research_object_exit(str, player, 'C') == -1)
-		return ft_error("map is not valide\n");
+	if (manage_error(size_y, str, player) == -1)
+		return (-1);
 	return (0);
 }

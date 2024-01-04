@@ -6,11 +6,13 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/03 13:44:25 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/04 13:15:17 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+static int	can_go_position(char **tab, t_position player, t_position destination);
 
 static int	is_obstacle(char **tab, t_position player)
 {
@@ -48,11 +50,29 @@ t_position	research_char(char **tab, t_position start, char c)
 	return (find);
 }
 
+/*static int	algo(char **tab, t_position player, t_position destination)
+{
+		if (can_go_position(tab, (t_position){player.x - 1, player.y},
+			destination) != -1
+		|| can_go_position(tab, (t_position){player.x + 1, player.y},
+			destination) != -1
+		|| can_go_position(tab, (t_position){player.x, player.y - 1},
+			destination) != -1
+		|| can_go_position(tab, (t_position){player.x, player.y + 1},
+			destination) != -1)
+	{
+		tab[player.y][player.x] = 'I';
+		return (1);
+	}
+	return (-1);
+}*/
+
 static int	can_go_position(char **tab, t_position player,
 	t_position destination)
 {
-	if (player.x < 0 || player.y < 0 || tab[player.y] == NULL ||
-		tab[player.y][player.x] == '\0' || tab[player.y][player.x] == 'X')
+	if (player.x < 0 || player.y < 0 || tab[player.y] == NULL
+		|| tab[player.y][player.x] == '\0'
+			|| tab[player.y][player.x] == 'X')
 		return (-1);
 	if (is_obstacle(tab, player))
 		return (-1);
@@ -62,10 +82,14 @@ static int	can_go_position(char **tab, t_position player,
 		return (1);
 	}
 	tab[player.y][player.x] = 'X';
-	if (can_go_position(tab, (t_position){player.x - 1, player.y}, destination) != -1
-		|| can_go_position(tab, (t_position){player.x + 1, player.y}, destination) != -1
-		|| can_go_position(tab, (t_position){player.x, player.y - 1}, destination) != -1
-		|| can_go_position(tab, (t_position){player.x, player.y + 1}, destination) != -1)
+	if (can_go_position(tab, (t_position){player.x - 1, player.y},
+			destination) != -1
+		|| can_go_position(tab, (t_position){player.x + 1, player.y},
+			destination) != -1
+		|| can_go_position(tab, (t_position){player.x, player.y - 1},
+			destination) != -1
+		|| can_go_position(tab, (t_position){player.x, player.y + 1},
+			destination) != -1)
 	{
 		tab[player.y][player.x] = 'I';
 		return (1);
@@ -88,7 +112,6 @@ int	ft_research_object_exit(char **map, t_position player, char c)
 		destination = research_char(cpy_map, start, c);
 		if (destination.x == -1 && destination.y == -1)
 			break ;
-		printf("%d\n",can_go_position(cpy_map, player, destination));
 		if (can_go_position(cpy_map, player, destination) == -1)
 			return (-1);
 		start.x = destination.x + 1;

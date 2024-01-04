@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/03 13:42:26 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/04 13:00:13 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ static char	**ft_creat_tab(char *str)
 	if (ft_check_map(cnt, &tab[n]) == -1)
 	{
 		ft_free_tab(tab);
-		return (NULL);
+		exit(0);
 	}
+
 	return (tab);
 }
 
@@ -74,7 +75,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	if (check_file_extension(av[1]) == 0)
-		ft_error("Map is not valid because a format is not good");
+		return (ft_error("Map is not valid because a format is not good"));
 	all.fd = open(av[1], O_RDONLY);
 	if (all.fd == -1)
 	{
