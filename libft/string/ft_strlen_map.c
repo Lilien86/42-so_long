@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lilien <lilien@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 07:32:02 by lilien            #+#    #+#             */
-/*   Updated: 2023/12/27 07:37:45 by lilien           ###   ########.fr       */
+/*   Updated: 2024/01/04 14:09:06 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int     ft_strlen_map(char **map)
+int	ft_strlen_map(char **map)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (map == 0 || *map == 0)
-        return (0);
-    while (map[i])
-        i++;
-    return (i);
+	i = 0;
+	if (map == 0 || *map == 0)
+		return (0);
+	while (map[i])
+		i++;
+	return (i);
 }

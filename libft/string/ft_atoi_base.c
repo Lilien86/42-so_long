@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 08:48:22 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/01 13:38:39 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/04 14:12:01 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	checkerror(char *str)
 
 int	nb_base(char str, char *base)
 {
-	int nb;
+	int	nb;
 
 	nb = 0;
 	while (base[nb] != '\0')
@@ -69,7 +69,7 @@ int	whitespaces(char *str, int *ptr_i)
 	return (count);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int		i;
 	int		negative;

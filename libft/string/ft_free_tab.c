@@ -6,23 +6,23 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:26:20 by lauger            #+#    #+#             */
-/*   Updated: 2023/12/15 09:50:34 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/04 14:10:53 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void    ft_free_tab(char **str)
+void	ft_free_tab(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (str == NULL || *str == NULL)
-        return ;
-    while (str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
+	i = 0;
+	if (str == NULL || *str == NULL)
+		return ;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
