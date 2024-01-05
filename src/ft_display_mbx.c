@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 14:06:06 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 11:35:45 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,20 +69,20 @@ static void	ft_check_symbol(char **map, t_display_info *image_info,
 
 static int	init_image(t_display_info *image_info)
 {
-	image_info->image_array[0] = (t_image){mlx_xpm_file_to_image
-		(image_info->mlx, "./Pixelarium/wall.xpm",
+	image_info->image_array[0] = (t_image){mlx_xpm_file_to_image(
+			image_info->mlx, "./Pixelarium/wall.xpm",
 			&image_info->size_image, &image_info->size_image), '1'};
-	image_info->image_array[1] = (t_image){mlx_xpm_file_to_image
-		(image_info->mlx, "./Pixelarium/void.xpm",
+	image_info->image_array[1] = (t_image){mlx_xpm_file_to_image(
+			image_info->mlx, "./Pixelarium/void.xpm",
 			&image_info->size_image, &image_info->size_image), '0'};
-	image_info->image_array[2] = (t_image){mlx_xpm_file_to_image
-		(image_info->mlx, "./Pixelarium/conssomable.xpm",
+	image_info->image_array[2] = (t_image){mlx_xpm_file_to_image(
+			image_info->mlx, "./Pixelarium/conssomable.xpm",
 			&image_info->size_image, &image_info->size_image), 'C'};
-	image_info->image_array[3] = (t_image){mlx_xpm_file_to_image
-		(image_info->mlx, "./Pixelarium/exit.xpm",
+	image_info->image_array[3] = (t_image){mlx_xpm_file_to_image(
+			image_info->mlx, "./Pixelarium/exit.xpm",
 			&image_info->size_image, &image_info->size_image), 'E'};
-	image_info->image_array[4] = (t_image){mlx_xpm_file_to_image
-		(image_info->mlx, "./Pixelarium/char.xpm",
+	image_info->image_array[4] = (t_image){mlx_xpm_file_to_image(
+			image_info->mlx, "./Pixelarium/char.xpm",
 			&image_info->size_image, &image_info->size_image), 'P'};
 	return (0);
 }

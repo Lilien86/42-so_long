@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/05 08:34:44 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 14:17:55 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_pos	research_char(char **tab, t_pos start, char c)
 	find.y = -1;
 	find.x = -1;
 	y = start.y;
-	while (tab[y] != NULL && y < (int)ft_strlen_map(tab))
+	while (y < ft_strlen_map(tab) && tab[y] != NULL)
 	{
 		x = start.x;
 		while (tab[y][x] != '\0' && x < (int)ft_strlen(tab[y]))
@@ -84,7 +84,7 @@ int	ft_research_object_exit(char **map, t_pos player, char c)
 
 	start.y = 0;
 	start.x = 0;
-	cpy_map = ft_strcpy_map(map, ft_strlen_map(map), ft_strlen(map[1]));
+	cpy_map = ft_strcpy_map(map, ft_strlen_map(map), (int)ft_strlen(map[1]));
 	while (1)
 	{
 		destination = research_char(cpy_map, start, c);

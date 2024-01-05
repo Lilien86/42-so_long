@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/05 08:35:07 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 11:51:00 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,8 @@ int	ft_check_map(size_t size_y, char **str)
 			if (str[i][j] != '0' && str[i][j] != '1' && str[i][j] != 'C'
 				&& str[i][j] != 'E' && str[i][j] != 'P' && str[i][j] != '\0')
 				return (-1);
-			j++;
+			else
+				j++;
 		}
 		i++;
 	}

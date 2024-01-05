@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/05 08:37:46 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 11:35:15 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ static int	manage_map(t_manage_map all)
 int	main(int ac, char **av)
 {
 	t_manage_map	all;
+
+	// ac = 2;
+	// av[1] = "../maps/map01.ber";
 
 	if (ac != 2)
 		return (0);

@@ -66,7 +66,7 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(OBJ_BONUS)
+$(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
 clean:

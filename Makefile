@@ -6,11 +6,11 @@
 #    By: lauger <lauger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:46:39 by lauger            #+#    #+#              #
-#    Updated: 2024/01/04 10:00:16 by lauger           ###   ########.fr        #
+#    Updated: 2024/01/05 14:26:08 by lauger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME = ./so_long
 
 LIBFT = ./libft
 LIBFT_LIBRARY = $(LIBFT)/libft.a
@@ -29,7 +29,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(LIBFT_LIBRARY):
-	make --quiet -C $(LIBFT)  re
+	make --quiet -C $(LIBFT)
 
 $(NAME): $(LIBFT_LIBRARY) $(OBJ)
 	$(CC) $(OBJ) $(MLX) $(LDFLAGS) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)

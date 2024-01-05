@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 07:31:21 by lilien            #+#    #+#             */
-/*   Updated: 2024/01/04 14:04:41 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 14:18:55 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_strcpy_map(char **original, int height, int width)
 	char	**cpy;
 
 	i = 0;
-	**cpy = ft_calloc(height, 1);
+	cpy = ft_calloc(height + 1, sizeof(char *));
 	while (i < height)
 	{
 		cpy[i] = ft_calloc((width + 1), sizeof(char));

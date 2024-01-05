@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 07:32:02 by lilien            #+#    #+#             */
-/*   Updated: 2024/01/04 14:09:06 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 14:25:05 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen_map(char **map)
 	int	i;
 
 	i = 0;
-	if (map == 0 || *map == 0)
+	if (map == NULL)
 		return (0);
 	while (map[i])
 		i++;
