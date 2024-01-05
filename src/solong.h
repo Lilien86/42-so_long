@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 11:53:18 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 08:35:53 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_position
 {
 	int	x;
 	int	y;
-}	t_position;
+}	t_pos;
 
 typedef struct s_display_info {
 	char	symbol;
@@ -59,21 +59,21 @@ typedef struct s_display_info {
 int				ft_check_map(size_t size_y, char **str);
 int				ft_error(const char *message);
 int				mbx_links(char **tab);
-int				ft_research_object_exit(char **tab, t_position player, char c);
-t_position		research_char(char **tab, t_position start, char c);
+int				ft_research_object_exit(char **tab, t_pos player, char c);
+t_pos			research_char(char **tab, t_pos start, char c);
 void			cleanup_resources(void *mlx, void *mlx_win,
 					t_image *image_array);
 int				ft_display_case(t_display_info *image_info,
-					t_image *image_array, t_position player, char symbol);
+					t_image *image_array, t_pos player, char symbol);
 int				handle_keydown(int keycode, void *param);
 
 int				movement_y_down(int keycode, t_display_info *image_info,
-					t_position player);
+					t_pos player);
 int				movement_y_up(int keycode, t_display_info *image_info,
-					t_position player);
+					t_pos player);
 int				movement_x_left(int keycode, t_display_info *image_info,
-					t_position player);
+					t_pos player);
 int				movement_x_right(int keycode, t_display_info *image_info,
-					t_position player);
+					t_pos player);
 
 #endif

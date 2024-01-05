@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:46:57 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 11:41:46 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 08:32:45 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	counter_c(char **map)
 }
 
 int	movement_y_down(int keycode, t_display_info *image_info,
-	t_position player)
+	t_pos player)
 {
 	if (keycode == 119)
 	{
@@ -54,15 +54,15 @@ int	movement_y_down(int keycode, t_display_info *image_info,
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y - 1][player.x] = 'P';
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x, player.y}, '0');
+			(t_pos){player.x, player.y}, '0');
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x, player.y - 1}, 'P');
+			(t_pos){player.x, player.y - 1}, 'P');
 	}
 	return (0);
 }
 
 int	movement_y_up(int keycode, t_display_info *image_info,
-	t_position player)
+	t_pos player)
 {
 	if (keycode == 115)
 	{
@@ -80,15 +80,15 @@ int	movement_y_up(int keycode, t_display_info *image_info,
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y + 1][player.x] = 'P';
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x, player.y}, '0');
+			(t_pos){player.x, player.y}, '0');
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x, player.y + 1}, 'P');
+			(t_pos){player.x, player.y + 1}, 'P');
 	}
 	return (0);
 }
 
 int	movement_x_left(int keycode, t_display_info *image_info,
-	t_position player)
+	t_pos player)
 {
 	if (keycode == 97)
 	{
@@ -106,15 +106,15 @@ int	movement_x_left(int keycode, t_display_info *image_info,
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y][player.x - 1] = 'P';
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x, player.y}, '0');
+			(t_pos){player.x, player.y}, '0');
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x - 1, player.y}, 'P');
+			(t_pos){player.x - 1, player.y}, 'P');
 	}
 	return (0);
 }
 
 int	movement_x_right(int keycode, t_display_info *image_info,
-	t_position player)
+	t_pos player)
 {
 	if (keycode == 100)
 	{
@@ -132,9 +132,9 @@ int	movement_x_right(int keycode, t_display_info *image_info,
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y][player.x + 1] = 'P';
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x, player.y}, '0');
+			(t_pos){player.x, player.y}, '0');
 		ft_display_case(image_info, image_info->image_array,
-			(t_position){player.x + 1, player.y}, 'P');
+			(t_pos){player.x + 1, player.y}, 'P');
 	}
 	return (0);
 }

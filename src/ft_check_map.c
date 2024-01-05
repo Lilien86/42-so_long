@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 13:51:19 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 08:35:07 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	ft_square_wall(size_t size_y, char **str)
 	return (0);
 }
 
-static int	manage_error(size_t size_y, char **str, t_position player)
+static int	manage_error(size_t size_y, char **str, t_pos player)
 {
 	if (ft_square_wall(size_y, str) == -1)
 	{
@@ -106,7 +106,7 @@ int	ft_check_map(size_t size_y, char **str)
 {
 	size_t		i;
 	size_t		j;
-	t_position	player;
+	t_pos		player;
 
 	i = 0;
 	while (str[i] != 0)
@@ -121,7 +121,7 @@ int	ft_check_map(size_t size_y, char **str)
 		}
 		i++;
 	}
-	player = research_char(str, (t_position){0, 0}, 'P');
+	player = research_char(str, (t_pos){0, 0}, 'P');
 	if (manage_error(size_y, str, player) == -1)
 		return (-1);
 	return (0);

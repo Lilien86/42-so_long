@@ -6,14 +6,14 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:34:25 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 11:52:58 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 08:35:45 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
 int	ft_display_case(t_display_info *image_info,
-	t_image *image_array, t_position player, char symbol)
+	t_image *image_array, t_pos player, char symbol)
 {
 	int	dest_x;
 	int	dest_y;	
@@ -40,7 +40,7 @@ int	ft_display_case(t_display_info *image_info,
 int	handle_keydown(int keycode, void *param)
 {
 	t_display_info	*image_info;
-	t_position		player;
+	t_pos			player;
 
 	image_info = (t_display_info *) param;
 	if (image_info->map == NULL)
@@ -52,7 +52,7 @@ int	handle_keydown(int keycode, void *param)
 			image_info->image_array);
 		exit(0);
 	}
-	player = research_char(image_info->map, (t_position){0, 0}, 'P');
+	player = research_char(image_info->map, (t_pos){0, 0}, 'P');
 	movement_y_down(keycode, image_info, player);
 	movement_y_up(keycode, image_info, player);
 	movement_x_left(keycode, image_info, player);

@@ -6,11 +6,9 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/04 13:00:13 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/05 08:37:46 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// I'm waiting (present progressif : be + -ing)
 
 #include "solong.h"
 
@@ -42,7 +40,6 @@ static char	**ft_creat_tab(char *str)
 		ft_free_tab(tab);
 		exit(0);
 	}
-
 	return (tab);
 }
 
