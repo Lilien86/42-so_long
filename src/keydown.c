@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_keydown.c                                       :+:      :+:    :+:   */
+/*   keydown.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:34:25 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/06 11:10:49 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 09:05:50 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	handle_keydown(int keycode, void *param)
 	{
 		cleanup_resources(image_info->mlx, image_info->mlx_win,
 			image_info->image_array);
+		ft_free_tab(image_info->map);
 		exit(0);
 	}
 	player = research_char(image_info->map, (t_pos){0, 0}, 'P');

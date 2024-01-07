@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_mbx.c                                   :+:      :+:    :+:   */
+/*   display_mbx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/06 11:10:13 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 09:04:48 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ int	mbx_links(char **tab)
 		return (0);
 	image_info.size_image = 50;
 	mlx = mlx_init();
-	mlx_win = mlx_new_window
-		(mlx, (50 * ft_strlen(tab[1])), (50 * ft_strlen_map(tab)), "So_long");
+	mlx_win = mlx_new_window(
+		mlx, (50 * ft_strlen(tab[1])), (50 * ft_strlen_map(tab)), "So_long");
 	image_info.mlx = mlx;
 	image_info.mlx_win = mlx_win;
 	init_image(&image_info);

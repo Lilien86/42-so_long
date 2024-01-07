@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 08:00:15 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 09:03:01 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static int	manage_map(t_manage_map create_map)
 	free(create_map.buf);
 	if (create_map.tab != NULL)
 		mbx_links(create_map.tab);
-	ft_free_tab(create_map.tab);
 	return (0);
 }
 
