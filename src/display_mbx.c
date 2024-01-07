@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 09:04:48 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 10:19:28 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,23 @@ static int	init_image(t_display_info *image_info)
 	return (0);
 }
 
-int	mbx_links(char **tab)
+int	mbx_links(char **map)
 {
 	void			*mlx;
 	void			*mlx_win;
 	t_display_info	image_info;
 
-	if (tab == NULL)
+	if (map == NULL)
 		return (0);
 	image_info.size_image = 50;
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(
-		mlx, (50 * ft_strlen(tab[1])), (50 * ft_strlen_map(tab)), "So_long");
+		mlx, (50 * ft_strlen(map[1])), (50 * ft_strlen_map(map)), "So_long");
 	image_info.mlx = mlx;
 	image_info.mlx_win = mlx_win;
 	init_image(&image_info);
-	ft_check_symbol(tab, &image_info, image_info.image_array);
-	image_info.map = tab;
+	ft_check_symbol(map, &image_info, image_info.image_array);
+	image_info.map = map;
 	mlx_hook(image_info.mlx_win, 2, (1L << 0), handle_keydown, &image_info);
 	mlx_loop(mlx);
 	return (0);

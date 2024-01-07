@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/06 11:12:32 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 10:52:14 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,18 @@ typedef struct s_position
 }	t_pos;
 
 typedef struct s_display_info {
-	char	symbol;
-	char	**map;
-	int		x;
-	int		y;
-	int		size_image;
-	void	*mlx_win;
-	void	*mlx;
-	t_image	image_array[5];
+	char			symbol;
+	char			**map;
+	unsigned int	moves;
+	int				x;
+	int				y;
+	int				size_image;
+	void			*mlx_win;
+	void			*mlx;
+	t_image			image_array[5];
 }	t_display_info;
 
-int				ft_check_map(size_t size_y, char **str);
+int				ft_check_map(size_t size_y, char **map);
 int				ft_error(const char *message);
 int				mbx_links(char **tab);
 int				ft_research_object_exit(char **tab, t_pos player, char c);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/05 11:51:00 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 10:21:04 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,28 +102,28 @@ static int	manage_error(size_t size_y, char **str, t_pos player)
 		return (0);
 }
 
-int	ft_check_map(size_t size_y, char **str)
+int	ft_check_map(size_t size_y, char **map)
 {
 	size_t		i;
 	size_t		j;
 	t_pos		player;
 
 	i = 0;
-	while (str[i] != 0)
+	while (map[i] != 0)
 	{
 		j = 0;
-		while (str[i][j])
+		while (map[i][j])
 		{
-			if (str[i][j] != '0' && str[i][j] != '1' && str[i][j] != 'C'
-				&& str[i][j] != 'E' && str[i][j] != 'P' && str[i][j] != '\0')
+			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C'
+				&& map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != '\0')
 				return (-1);
 			else
 				j++;
 		}
 		i++;
 	}
-	player = research_char(str, (t_pos){0, 0}, 'P');
-	if (manage_error(size_y, str, player) == -1)
+	player = research_char(map, (t_pos){0, 0}, 'P');
+	if (manage_error(size_y, map, player) == -1)
 		return (-1);
 	return (0);
 }

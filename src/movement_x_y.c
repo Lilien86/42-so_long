@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_movement_x_y.c                                  :+:      :+:    :+:   */
+/*   movement_x_y.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:46:57 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/06 11:07:58 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 11:30:05 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	movement_y_down(int keycode, t_display_info *image_info,
 				image_info->mlx_win, image_info->image_array);
 			exit(0);
 		}
+		ft_printf("%u\n", image_info->moves++);
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y - 1][player.x] = 'P';
 		ft_display_case(image_info, image_info->image_array,
@@ -77,6 +78,7 @@ int	movement_y_up(int keycode, t_display_info *image_info,
 				image_info->image_array);
 			exit(0);
 		}
+		ft_printf("%u\n", image_info->moves++);
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y + 1][player.x] = 'P';
 		ft_display_case(image_info, image_info->image_array,
@@ -103,6 +105,7 @@ int	movement_x_left(int keycode, t_display_info *image_info,
 				image_info->image_array);
 			exit(0);
 		}
+		ft_printf("%u\n", image_info->moves++);
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y][player.x - 1] = 'P';
 		ft_display_case(image_info, image_info->image_array,
@@ -129,6 +132,7 @@ int	movement_x_right(int keycode, t_display_info *image_info,
 				image_info->image_array);
 			exit(0);
 		}
+		ft_printf("%u\n", image_info->moves++);
 		image_info->map[player.y][player.x] = '0';
 		image_info->map[player.y][player.x + 1] = 'P';
 		ft_display_case(image_info, image_info->image_array,
