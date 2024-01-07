@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pars.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/05 11:35:15 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 08:00:15 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_file_extension(const char *filename)
 	return (0);
 }
 
-static char	**ft_creat_tab(char *str)
+static char	**ft_create_tab(char *str)
 {
 	char	**tab;
 	int		n;
@@ -43,45 +43,42 @@ static char	**ft_creat_tab(char *str)
 	return (tab);
 }
 
-static int	manage_map(t_manage_map all)
+static int	manage_map(t_manage_map create_map)
 {
-	all.buf = ft_calloc(1, 1);
-	all.line = get_next_line(all.fd);
-	while (all.line != NULL)
+	create_map.buf = ft_calloc(1, 1);
+	create_map.line = get_next_line(create_map.fd);
+	while (create_map.line != NULL)
 	{
-		all.tmp = ft_strjoin(all.buf, all.line);
-		all.buf = all.tmp;
-		free(all.line);
-		all.line = get_next_line(all.fd);
+		create_map.tmp = ft_strjoin(create_map.buf, create_map.line);
+		create_map.buf = create_map.tmp;
+		free(create_map.line);
+		create_map.line = get_next_line(create_map.fd);
 	}
-	close(all.fd);
-	if (all.line != NULL)
-		free(all.line);
-	all.tab = ft_creat_tab(all.buf);
-	free(all.buf);
-	if (all.tab != NULL)
-		mbx_links(all.tab);
-	ft_free_tab(all.tab);
+	close(create_map.fd);
+	if (create_map.line != NULL)
+		free(create_map.line);
+	create_map.tab = ft_create_tab(create_map.buf);
+	free(create_map.buf);
+	if (create_map.tab != NULL)
+		mbx_links(create_map.tab);
+	ft_free_tab(create_map.tab);
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	t_manage_map	all;
-
-	// ac = 2;
-	// av[1] = "../maps/map01.ber";
+	t_manage_map	create_map;
 
 	if (ac != 2)
 		return (0);
 	if (check_file_extension(av[1]) == 0)
 		return (ft_error("Map is not valid because a format is not good"));
-	all.fd = open(av[1], O_RDONLY);
-	if (all.fd == -1)
+	create_map.fd = open(av[1], O_RDONLY);
+	if (create_map.fd == -1)
 	{
 		perror("Error at open the file");
 		return (0);
 	}
-	manage_map(all);
+	manage_map(create_map);
 	return (0);
 }

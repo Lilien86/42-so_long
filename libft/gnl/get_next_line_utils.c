@@ -6,12 +6,11 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:40:21 by lauger            #+#    #+#             */
-/*   Updated: 2023/11/28 07:18:52 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/07 08:06:18 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*ft_strjoin(char *s1, char *s2)
 {

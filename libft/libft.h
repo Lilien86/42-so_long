@@ -80,28 +80,27 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 ####LIBFT##############################
 *///###################################
 
-int     ft_printf(const char *str, ...);
-int     ft_putchar(char c);
-int     ft_putnbr_base_len(unsigned long int nbr, char *base);
-int     ft_putnbr_base_len_origin(int nbr, char *base);
-int     ft_putstr_len(char *str);
+int			ft_printf(const char *str, ...);
+int			ft_putchar(char c);
+int			ft_putnbr_base_len(unsigned long int nbr, char *base);
+int			ft_putnbr_base_len_origin(int nbr, char *base);
+int			ft_putstr_len(char *str);
 
 /*#####################################
 ####Get_Next_Line######################
 *///###################################
 
-char    *get_next_line(int fd);
-int     check_str_char(char *line, char *buffer);
-char    *ft_strjoin_modif(char *s1, char *s2);
-
+char		*get_next_line(int fd);
+int			check_str_char(char *line, char *buffer);
+char		*ft_strjoin_modif(char *s1, char *s2);
 
 /*#####################################
 ####En Plus############################
 *///###################################
 
-int		ft_atoi_base(char *str, char *base);
-void    ft_free_tab(char **str);
-int     ft_strlen_map(char **map);
-char 	**ft_strcpy_map(char **original, int height, int width);
+int			ft_atoi_base(char *str, char *base);
+void		ft_free_tab(char **str);
+int			ft_strlen_map(char **map);
+char		**ft_strcpy_map(char **original, int height, int width);
 
 #endif
