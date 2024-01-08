@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 09:46:57 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 11:30:05 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/08 14:33:56 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	movement_y_down(int keycode, t_display_info *image_info,
 		{
 			cleanup_resources(image_info->mlx,
 				image_info->mlx_win, image_info->image_array);
+			ft_free_tab(image_info->map);
 			exit(0);
 		}
 		ft_printf("%u\n", image_info->moves++);
@@ -76,6 +77,7 @@ int	movement_y_up(int keycode, t_display_info *image_info,
 		{
 			cleanup_resources(image_info->mlx, image_info->mlx_win,
 				image_info->image_array);
+			ft_free_tab(image_info->map);
 			exit(0);
 		}
 		ft_printf("%u\n", image_info->moves++);
@@ -103,6 +105,7 @@ int	movement_x_left(int keycode, t_display_info *image_info,
 		{
 			cleanup_resources(image_info->mlx, image_info->mlx_win,
 				image_info->image_array);
+			ft_free_tab(image_info->map);
 			exit(0);
 		}
 		ft_printf("%u\n", image_info->moves++);
@@ -130,6 +133,7 @@ int	movement_x_right(int keycode, t_display_info *image_info,
 		{
 			cleanup_resources(image_info->mlx, image_info->mlx_win,
 				image_info->image_array);
+			ft_free_tab(image_info->map);
 			exit(0);
 		}
 		ft_printf("%u\n", image_info->moves++);
