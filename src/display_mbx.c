@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 10:39:21 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 10:19:28 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/08 14:09:10 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,12 @@ int	mbx_links(char **map)
 
 	if (map == NULL)
 		return (0);
+	image_info.moves = 0;
 	image_info.size_image = 50;
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(
-		mlx, (50 * ft_strlen(map[1])), (50 * ft_strlen_map(map)), "So_long");
+			mlx, (50 * ft_strlen(map[1])),
+			(50 * ft_strlen_map(map)), "So_long");
 	image_info.mlx = mlx;
 	image_info.mlx_win = mlx_win;
 	init_image(&image_info);
