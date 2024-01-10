@@ -7,16 +7,33 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "src/*.c",
+                // "${file}",
+                // "src/main.c",
+                // "src/*.c",
+                "*.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
-				"-lm", "-I", "./src",
-				"-L", "./libft", "-I", "./libft", "-lft",
-				"-L", "./mlx", "-I", "./mlx", "-lmlx",
-                "-lXext", "-lX11",
+                // "main",
+                "-lm",
+                "-I",
+                ".",
+                "-I",
+                "../mlx",
+                "-L",
+                "../mlx",
+                "-I",
+                "../libft",
+                "-L",
+                "../libft",
+				"-lft",
+                "-lmlx_Linux",
+                "-lXext",
+                "-lX11",
+                "-Wall", "-Wextra", "-Werror"
             ],
             "options": {
-                "cwd": "${workspaceFolder}"
+                "cwd": "${fileDirname}"
+                //"cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"

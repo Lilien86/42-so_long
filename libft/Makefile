@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror -I. -I./check_char -I./management_memory -I./string -I./link_list
+CFLAGS = -Wall -Wextra -Werror -I. -I./check_char -I./management_memory -I./string -I./link_list -fPIE
 NAME = libft.a
 CC = cc
 

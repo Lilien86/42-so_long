@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 09:02:15 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 10:21:04 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/10 13:21:00 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,36 @@ static int	ft_single_ep(char **str)
 	return (0);
 }
 
-static int	ft_square_wall(size_t size_y, char **str)
+static int	ft_square_wall(size_t size_y, char **map )
 {
 	size_t	i;
 
 	i = 0;
-	while (str[0][i])
+	while (map[0][i])
 	{
-		if (str[0][i] != '1')
+		if (map[0][i] != '1' && map[0][i] != '\r')
 			return (-1);
 		i++;
 	}
 	i = 0;
-	while (str[size_y - 1][i])
+	while (map[size_y - 1][i])
 	{
-		if (str[size_y - 1][i] != '1')
+		if (map[size_y - 1][i] != '1' && map[size_y - 1][i] != '\r'
+			&& map[size_y - 1][i] != '\0')
 			return (-1);
 		i++;
 	}
 	i = 0;
-	while (((ft_strlen(str[i])) >= size_y)
-		&& (ft_strlen(str[i]) == ft_strlen(str[0])))
+	while (i < size_y - 1)
 	{
-		if (str[i][0] != '1' && str[i][ft_strlen(str[i]) - 1] != '1')
-			return (-1);
+		if ((map[i][0] != '1' && map[i][ft_strlen(map[i]) - 1] != '1')
+			|| (!((ft_strlen(map[i])) >= size_y))
+			|| (ft_strlen(map[i]) != ft_strlen(map[0])))
+			{
+				for(size_t p = 0; p < size_y; p++)
+					ft_printf("%d: %s\n", p, map[p]);
+				return (-1);
+			}
 		i++;
 	}
 	return (0);
@@ -115,8 +121,11 @@ int	ft_check_map(size_t size_y, char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C'
-				&& map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != '\0')
+				&& map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != '\r')
+			{
+				ft_printf("map not valide, not contain what is required");
 				return (-1);
+			}
 			else
 				j++;
 		}

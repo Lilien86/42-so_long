@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 09:03:01 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/10 13:16:59 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ static int	manage_map(t_manage_map create_map)
 int	main(int ac, char **av)
 {
 	t_manage_map	create_map;
+
+	// ac = 2;
+	// av[1] = "../so_long_tester/maps/invalid/map-not-rectangular-1.ber";
 
 	if (ac != 2)
 		return (0);

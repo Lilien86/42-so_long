@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 11:07:19 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/10 10:17:51 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,26 @@ static int	can_go_position(char **map, t_pos player, t_pos dest)
 		|| can_go_position(map, (t_pos){player.x, player.y + 1}, dest));
 }
 
+static char	**clean_map(char **map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'X')
+				map[y][x] = '0';
+			x++;
+		}
+		y++;
+	}
+	return (map);
+}
+
 int	ft_research_object_exit(char **map, t_pos player, char c)
 {
 	t_pos	start;
@@ -77,6 +97,7 @@ int	ft_research_object_exit(char **map, t_pos player, char c)
 			break ;
 		if (can_go_position(cpy_map, player, destination) == 0)
 			return (-1);
+		cpy_map = clean_map(cpy_map);
 		start.x = destination.x + 1;
 		start.y = destination.y;
 	}
