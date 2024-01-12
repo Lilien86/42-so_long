@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 11:07:07 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/07 10:52:14 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/12 01:33:20 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,8 @@ int				movement_x_left(int keycode, t_display_info *image_info,
 					t_pos player);
 int				movement_x_right(int keycode, t_display_info *image_info,
 					t_pos player);
+int				close_windows(t_display_info *image_info);
+int				protection(t_manage_map create_map);
+char			**ft_create_tab(char *str);
 
 #endif

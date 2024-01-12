@@ -6,7 +6,7 @@
 #    By: lauger <lauger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 09:46:39 by lauger            #+#    #+#              #
-#    Updated: 2024/01/07 08:02:16 by lauger           ###   ########.fr        #
+#    Updated: 2024/01/11 12:42:42 by lauger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ LIBFT = ./libft
 LIBFT_LIBRARY = $(LIBFT)/libft.a
 
 MLX_PATH = ./mlx
+MLX_M = $(MLX_PATH)/libmlx_Linux.a
+
 MLX = -L $(MLX_PATH) -Imlx -O3 -lmlx
 
 CC = cc
@@ -30,13 +32,16 @@ all: $(NAME)
 
 $(LIBFT_LIBRARY):
 	make --quiet -C $(LIBFT)
+$(MLX_M) :
+	make --quiet -C $(MLX_PATH)
 
-$(NAME): $(LIBFT_LIBRARY) $(OBJ)
+$(NAME): $(MLX_M) $(LIBFT_LIBRARY) $(OBJ)
 	$(CC) $(OBJ) $(MLX) $(LDFLAGS) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I$(MLX_PATH) -I$(LIBFT) -c $< -o $@
 clean:
+	make --quiet -C $(MLX_PATH)
 	make --quiet -C $(LIBFT) clean
 	rm -f $(NAME) $(OBJ)
 

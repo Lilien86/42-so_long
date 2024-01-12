@@ -6,7 +6,7 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:30:35 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/10 13:16:59 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/12 01:33:48 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,16 @@ static int	check_file_extension(const char *filename)
 	return (0);
 }
 
-static char	**ft_create_tab(char *str)
+int	close_windows(t_display_info *image_info)
+{
+	cleanup_resources(image_info->mlx, image_info->mlx_win,
+		image_info->image_array);
+	ft_free_tab(image_info->map);
+	exit(0);
+	return (0);
+}
+
+char	**ft_create_tab(char *str)
 {
 	char	**tab;
 	int		n;
@@ -38,7 +47,7 @@ static char	**ft_create_tab(char *str)
 	if (ft_check_map(cnt, &tab[n]) == -1)
 	{
 		ft_free_tab(tab);
-		exit(0);
+		return (NULL);
 	}
 	return (tab);
 }
@@ -47,6 +56,11 @@ static int	manage_map(t_manage_map create_map)
 {
 	create_map.buf = ft_calloc(1, 1);
 	create_map.line = get_next_line(create_map.fd);
+	if (create_map.line == NULL)
+	{
+		free(create_map.buf);
+		exit(0);
+	}
 	while (create_map.line != NULL)
 	{
 		create_map.tmp = ft_strjoin(create_map.buf, create_map.line);
@@ -55,12 +69,7 @@ static int	manage_map(t_manage_map create_map)
 		create_map.line = get_next_line(create_map.fd);
 	}
 	close(create_map.fd);
-	if (create_map.line != NULL)
-		free(create_map.line);
-	create_map.tab = ft_create_tab(create_map.buf);
-	free(create_map.buf);
-	if (create_map.tab != NULL)
-		mbx_links(create_map.tab);
+	protection(create_map);
 	return (0);
 }
 
@@ -68,17 +77,20 @@ int	main(int ac, char **av)
 {
 	t_manage_map	create_map;
 
-	// ac = 2;
-	// av[1] = "../so_long_tester/maps/invalid/map-not-rectangular-1.ber";
-
 	if (ac != 2)
+	{
+		ft_printf("Error:\n not arguments\n");
 		return (0);
+	}
 	if (check_file_extension(av[1]) == 0)
-		return (ft_error("Map is not valid because a format is not good"));
+	{
+		ft_printf("Error:\ninvalid map: format is not good\n");
+		return (0);
+	}
 	create_map.fd = open(av[1], O_RDONLY);
 	if (create_map.fd == -1)
 	{
-		perror("Error at open the file");
+		ft_printf("Error:\n imposible of open the file\n");
 		return (0);
 	}
 	manage_map(create_map);

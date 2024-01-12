@@ -6,13 +6,29 @@
 /*   By: lauger <lauger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 09:43:48 by lauger            #+#    #+#             */
-/*   Updated: 2024/01/10 10:17:51 by lauger           ###   ########.fr       */
+/*   Updated: 2024/01/12 01:32:13 by lauger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
 static int	can_go_position(char **map, t_pos player, t_pos destination);
+
+int	protection(t_manage_map create_map)
+{
+	if (create_map.line != NULL)
+		free(create_map.line);
+	create_map.tab = ft_create_tab(create_map.buf);
+	if (create_map.tab == NULL)
+	{
+		free(create_map.buf);
+		exit(0);
+	}
+	free(create_map.buf);
+	if (create_map.tab != NULL)
+		mbx_links(create_map.tab);
+	return (0);
+}
 
 t_pos	research_char(char **map, t_pos start, char c)
 {
@@ -44,16 +60,17 @@ t_pos	research_char(char **map, t_pos start, char c)
 
 static int	can_go_position(char **map, t_pos player, t_pos dest)
 {
-	if (player.x < 0 || player.y < 0 || map[player.y] == NULL
-		|| map[player.y][player.x] == '\0'
-		|| map[player.y][player.x] == 'X'
-		|| map[player.y][player.x] == '1')
-		return (0);
 	if ((player.x == dest.x) && (player.y == dest.y))
 	{
 		map[player.y][player.x] = '#';
 		return (1);
 	}
+	if (player.x < 0 || player.y < 0 || map[player.y] == NULL
+		|| map[player.y][player.x] == '\0'
+		|| map[player.y][player.x] == 'X'
+		|| map[player.y][player.x] == '1'
+		|| map[player.y][player.x] == 'E')
+		return (0);
 	map[player.y][player.x] = 'X';
 	return (can_go_position(map, (t_pos){player.x - 1, player.y}, dest)
 		|| can_go_position(map, (t_pos){player.x + 1, player.y}, dest)
@@ -96,7 +113,10 @@ int	ft_research_object_exit(char **map, t_pos player, char c)
 		if (destination.x == -1 && destination.y == -1)
 			break ;
 		if (can_go_position(cpy_map, player, destination) == 0)
+		{
+			ft_free_tab(cpy_map);
 			return (-1);
+		}
 		cpy_map = clean_map(cpy_map);
 		start.x = destination.x + 1;
 		start.y = destination.y;
